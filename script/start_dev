@@ -1,0 +1,25 @@
+#!/bin/bash
+
+>&2 echo ">> Stopping nginx"
+/etc/init.d/nginx stop
+
+>&2 echo ">> Removing previous server.pid file"
+rm -f tmp/pids/server.pid
+
+>&2 echo ">> Updating gems"
+bundle check || bundle install
+
+>&2 echo ">> Creating dev database"
+./bin/rails db:create
+
+>&2 echo ">> Migrating dev database"
+./bin/rails db:migrate
+
+>&2 echo ">> Creating test database"
+./bin/rails db:create RAILS_ENV=test
+
+>&2 echo ">> Migrating test database"
+./bin/rails db:migrate RAILS_ENV=test
+
+>&2 echo ">> Starting Rails server :)"
+./bin/rails s -b 0.0.0.0
