@@ -10,6 +10,13 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+      <%= render partial: 'navigation' %>
+
+      <%= alert_message :success, notice %>
+      <%= alert_message :warning, alert %>
+
+      <%= yield %>
+    </div>
   </body>
 </html>
