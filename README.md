@@ -52,3 +52,8 @@ $ docker run -d \
   --name="ruby-on-whales" \
   andrestv/ruby-on-whales:latest
 ```
+
+## docker-compose
+```sh
+$ docker-compose up -d
+```
