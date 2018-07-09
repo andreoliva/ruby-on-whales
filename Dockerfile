@@ -14,6 +14,14 @@ EXPOSE 3000
 ENV INSTALL_PATH /home/app
 ENV RAILS_ENV development
 
+# Adding ARGS for use in production environments
+ARG rails_env=development
+ARG rails_master_key
+ARG production_database_password
+ENV RAILS_ENV ${rails_env}
+ENV RAILS_MASTER_KEY ${rails_master_key}
+ENV PRODUCTION_DATABASE_PASSWORD ${production_database_password}
+
 # Installing system dependencies
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -

@@ -2,11 +2,9 @@ version: '3.2'
 services:
   ruby-on-whales:
     image: andrestv/ruby-on-whales:latest
-    ports:
-      - '3000:3000'
     volumes:
       - type: volume
-        source: psql_run_volume
+        source: psql_run
         target: /var/run/postgresql
     depends_on:
       - 'postgres'
@@ -22,17 +20,13 @@ services:
       POSTGRES_PASSWORD: 'postgres'
     volumes:
       - type: volume
-        source: psql_run_volume
+        source: psql_run
         target: /var/run/postgresql
-      - type: volume
-        source: psql_data_volume
-        target: /var/lib/postgresql/data
     networks:
       whales_net:
         ipv4_address: 10.5.0.3
 volumes:
-  psql_run_volume:
-  psql_data_volume:
+  psql_run:
 
 networks:
   whales_net:

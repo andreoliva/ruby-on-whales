@@ -1,0 +1,16 @@
+version: '3.2'
+services:
+  ruby-on-whales:
+    command: sh ./script/start_prod
+    environment:
+      RAILS_ENV: production
+    volumes:
+      - './docker-data/log/nginx:/var/log/nginx'
+      - './docker-data/log/rails:/home/app/log'
+    ports:
+      - '80:80'
+      - '443:443'
+  postgres:
+    volumes:
+      - './docker-data/db:/var/lib/postgresql/data'
+      - './docker-data/log/postgresql:/var/log/postgresql'

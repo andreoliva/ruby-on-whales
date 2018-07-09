@@ -1,0 +1,10 @@
+#!/bin/bash
+
+>&2 echo ">> Creating production database"
+./bin/rails db:create RAILS_ENV=production
+
+>&2 echo ">> Migrating production database"
+./bin/rails db:migrate RAILS_ENV=production
+
+>&2 echo ">> Starting nginx"
+/sbin/my_init
