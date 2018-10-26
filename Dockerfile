@@ -49,4 +49,4 @@ RUN /usr/local/rvm/bin/rvm rvmrc warning ignore /home/app/Gemfile
 RUN chown -R app:app .
 
 # Starting application
-CMD ["sh", "/home/app/script/start_dev"]
+CMD ["sh", "/home/app/script/start_prod"]
