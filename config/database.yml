@@ -19,6 +19,6 @@ test:
 
 production:
   <<: *default
-  database: row_production
+  database: kubernetes_poc
   username: postgres
-  password: <%= ENV['PRODUCTION_DATABASE_PASSWORD'] %>
+  password: postgres
