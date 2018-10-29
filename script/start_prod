@@ -6,5 +6,8 @@
 >&2 echo ">> Migrating production database"
 ./bin/rails db:migrate RAILS_ENV=production
 
+>&2 echo ">> Updating permission of ./tmp/cache directory"
+chmod -R go+w ./tmp/cache
+
 >&2 echo ">> Starting nginx"
 /sbin/my_init
