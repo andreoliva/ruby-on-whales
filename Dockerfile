@@ -47,7 +47,7 @@ RUN gem install bundler
 RUN bundle install \
   && bin/rails assets:precompile \
   && bin/rails log:clear tmp:clear \
-  && /usr/local/rvm/bin/rvm rvmrc warning ignore /home/app/Gemfile
+  && /usr/local/rvm/bin/rvm rvmrc warning ignore /home/app/ruby-on-whales/Gemfile
 
 # Giving ownership to the "app" user bacause it's the default user set at the passenger-ruby image
 RUN chown -R app:app .
